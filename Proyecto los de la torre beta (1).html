@@ -1,0 +1,1044 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Los de la Torre — Sitio Oficial</title>
+    <meta name="description"
+        content="Los de la Torre — Contrataciones, galería, canciones y contacto directo con Barac de la Torre." />
+
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity=""
+        crossorigin="anonymous" />
+
+    <style>
+        /* ============================
+       Variables, reset y utilidades
+       ============================ */
+        :root {
+            --bg: #07070a;
+            --card: rgba(255, 255, 255, 0.03);
+            --accent: #ff6e00;
+            --accent-2: #ff8b3d;
+            --muted: #b8aebf;
+            --radius: 12px;
+            --maxw: 1200px;
+            --glass: rgba(255, 255, 255, 0.04);
+            --success: #25D366;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+            background: var(--bg);
+            color: #fff;
+            -webkit-font-smoothing: antialiased
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        img {
+            max-width: 100%;
+            display: block
+        }
+
+        .wrap {
+            max-width: var(--maxw);
+            margin: 18px auto;
+            padding: 18px
+        }
+
+        /* Header / nav */
+        header {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            z-index: 60;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.25));
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03)
+        }
+
+        .header-inner {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 18px;
+            gap: 12px
+        }
+
+        .brand {
+            display: flex;
+            gap: 12px;
+            align-items: center
+        }
+
+        .logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.06);
+            flex-shrink: 0;
+            background: #111
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block
+        }
+
+        nav {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap
+        }
+
+        nav a {
+            padding: 8px 12px;
+            border-radius: 10px;
+            color: #fff;
+            background: transparent;
+            border: 1px solid transparent;
+            font-weight: 600
+        }
+
+        nav a.active {
+            background: linear-gradient(90deg, rgba(255, 110, 0, 0.12), transparent);
+            border: 1px solid rgba(255, 110, 0, 0.06)
+        }
+
+        /* Hero / portada */
+        .hero {
+            min-height: 72vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 18px 40px;
+            position: relative;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(7, 7, 7, 0.25), rgba(7, 7, 7, 0.6));
+            pointer-events: none
+        }
+
+        .hero-inner {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 28px;
+            align-items: center;
+            padding: 18px
+        }
+
+        .hero-left {
+            z-index: 2
+        }
+
+        .hero-right {
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 6vw, 58px);
+            margin: 0 0 8px;
+            line-height: 1
+        }
+
+        .lead {
+            color: var(--muted);
+            margin: 6px 0 16px
+        }
+
+        .intro {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.12));
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.03)
+        }
+
+        /* hero background image */
+        body.home {
+            background-image: url("https://scontent.fntr5-1.fna.fbcdn.net/v/t39.30808-6/549801766_1369455221849241_3030555907421107800_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=HT-gOtcQMrsQ7kNvwFzmYfD&_nc_oc=Adl81y00zTtjSIBoPU5wICRI-p_Ow3m_eCykiGhusIl0b4hOeiH5zgdD79YlC7XRJGva_O6BWic_DgKLX172NGwI&_nc_zt=23&_nc_ht=scontent.fntr5-1.fna&_nc_gid=D6xIZ_63jsILTdeGSKD5dQ&oh=00_Afe_G_bTlcHt4FaOK0eOC1m4rrT4ruxd7jwICz5fa0GqmA&oe=6905A3C1");
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Animated CTA */
+        .wa-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(90deg, var(--success), #128C7E);
+            color: #022;
+            padding: 12px 18px;
+            border-radius: 14px;
+            border: 0;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+            transition: transform .18s ease, box-shadow .18s
+        }
+
+        .wa-cta:active {
+            transform: translateY(2px)
+        }
+
+        .wa-cta .pulse {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #fff;
+            opacity: 0;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+            animation: ping 1.6s infinite
+        }
+
+        @keyframes ping {
+            0% {
+                transform: scale(1);
+                opacity: .5
+            }
+
+            50% {
+                transform: scale(1.7);
+                opacity: .5
+            }
+
+            100% {
+                transform: scale(1.9);
+                opacity: 0
+            }
+        }
+
+        .social-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            cursor: pointer
+        }
+
+        .social-btn i {
+            width: 18px;
+            text-align: center
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 18px
+        }
+
+        .gallery .gimg {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 4px solid rgba(0, 0, 0, 0.25);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5)
+        }
+
+        @media (max-width:900px) {
+            .hero-inner {
+                grid-template-columns: 1fr
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        @media (max-width:600px) {
+            header .header-inner {
+                flex-direction: column;
+                align-items: flex-start
+            }
+
+            .gallery {
+                grid-template-columns: 1fr
+            }
+
+            .hero {
+                padding-top: 140px
+            }
+        }
+
+        /* Sections */
+        main {
+            max-width: var(--maxw);
+            margin: 18px auto;
+            padding: 18px
+        }
+
+        .card {
+            background: var(--card);
+            padding: 16px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6)
+        }
+
+        h2 {
+            margin: 0 0 12px
+        }
+
+        .small {
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        /* Songs list */
+        .singerNav {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 12px
+        }
+
+        .singerBtn {
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            cursor: pointer;
+            color: #fff
+        }
+
+        .singerBtn.active {
+            background: rgba(255, 110, 0, 0.12);
+            border-color: rgba(255, 110, 0, 0.08)
+        }
+
+        .songList {
+            display: flex;
+            flex-direction: column;
+            gap: 8px
+        }
+
+        .songItem {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.01))
+        }
+
+        .songTitle {
+            font-weight: 700
+        }
+
+        .songMeta {
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        /* IG simulated */
+        .ig-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px
+        }
+
+        .ig-photo {
+            width: 420px;
+            max-width: 94%;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+            border: 6px solid rgba(255, 255, 255, 0.03)
+        }
+
+        .ig-controls {
+            display: flex;
+            gap: 8px
+        }
+
+        /* Admin */
+        .adminGrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px
+        }
+
+        .adminGrid .formGroup {
+            margin-bottom: 10px
+        }
+
+        input[type=text],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: transparent;
+            color: #fff
+        }
+
+        textarea {
+            min-height: 120px
+        }
+
+        .btn {
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            border: 0;
+            color: #071018;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700
+        }
+
+        .btn.ghost {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #fff
+        }
+
+        /* Modal gallery */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 120
+        }
+
+        .modal img {
+            max-width: 92%;
+            max-height: 92%;
+            border-radius: 12px
+        }
+
+        /* Footer */
+        footer {
+            max-width: var(--maxw);
+            margin: 18px auto;
+            padding: 12px 18px;
+            color: var(--muted);
+            font-size: 13px;
+            text-align: center
+        }
+
+        /* Toast */
+        #toast {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 20px;
+            background: #071018;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            z-index: 9999;
+            display: none
+        }
+    </style>
+</head>
+
+<body class="home">
+    <header>
+        <div class="header-inner">
+            <div class="brand">
+                <a class="logo" href="#home" title="Los de la Torre — Inicio">
+                    <img src="https://scontent.fntr5-1.fna.fbcdn.net/v/t39.30808-6/475209008_1160101529451279_6757551169424132146_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=1xsFQZdbL_MQ7kNvwE8_jpu&_nc_oc=AdkiNJ75tio98SIXHlxbma92kj9oJHqs1r_zyyczPQAaVGenLweFUQTNYLX6v-_hKEtL9HOw3a6Wu1sniO7qc0bK&_nc_zt=23&_nc_ht=scontent.fntr5-1.fna&_nc_gid=1QJwB-_1eHl5hBj9WSzJEg&oh=00_AfdyO5eNfK9oFSvZGpmyITBvhbu7KJAOYuhyFEeFe-YjEg&oe=6905B14B"
+                        alt="Logo Los de la Torre">
+                </a>
+                <div>
+                    <div style="font-weight:800;font-size:18px">Los de la Torre</div>
+                    <div class="small">Monclova, Coah. — Contrataciones: Barac de la Torre</div>
+                </div>
+            </div>
+
+            <nav id="topnav" aria-label="Navegación principal">
+                <a href="#home" data-route="home" class="active">Inicio</a>
+                <a href="#songs" data-route="songs">Biblioteca</a>
+                <a href="#quotes" data-route="quotes">Cotizaciones</a>
+                <a href="#ig" data-route="ig">Proximos Eventos</a>
+                <a href="#contact" data-route="contact">Contacto</a>
+                <a href="#admin" data-route="admin">Panel Admin</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="app" style="padding-top:110px"></main>
+
+    <footer>
+        © <span id="year"></span> Los de la Torre —
+        <a href="https://www.instagram.com/losdelatorreoficial" target="_blank"
+            rel="noopener noreferrer">@losdelatorreoficial</a> ·
+        <a href="https://www.facebook.com/losdelatorreoficial?locale=es_LA" target="_blank"
+            rel="noopener noreferrer">Facebook</a>
+    </footer>
+
+    <div id="toast"></div>
+
+    <script>
+        /* ===================================================
+           App SPA simple con localStorage - Comentarios en ES
+           - Persistencia: localStorage
+           - Secciones: home, songs, quotes, ig, contact, admin
+           =================================================== */
+
+        // Claves storage
+        const STORAGE = { SINGERS: 'ldr_singers_v1', SONGS: 'ldr_songs_v1', GALLERY: 'ldr_gallery_v1', ADMIN_SESSION: 'ldr_admin_session_v1' };
+
+        // Datos iniciales: cantantes populares + canciones (solo nombres)
+        const INITIAL = {
+            singers: [
+                { id: 'nat', name: 'Natanael Cano' },
+                { id: 'peso', name: 'Peso Pluma' },
+                { id: 'junior', name: 'Junior H' },
+                { id: 'gabito', name: 'Gabito Ballesteros' },
+                { id: 'barac', name: 'Barac de la Torre' } // dueño/líder
+            ],
+            // canciones: solo títulos y letra opcional (no reproducir en esta lista)
+            songs: [
+                // Natanael Cano (ejemplos)
+                { id: 'n1', singerId: 'nat', title: 'Amor Tumbado', lyrics: 'Letra ejemplo de Amor Tumbado...' },
+                { id: 'n2', singerId: 'nat', title: 'El Drip', lyrics: 'Letra ejemplo de El Drip...' },
+                { id: 'n3', singerId: 'nat', title: 'PRC', lyrics: 'Letra ejemplo de PRC...' },
+                { id: 'n4', singerId: 'nat', title: 'Soy El Diablo', lyrics: 'Letra ejemplo...' },
+                // Peso Pluma
+                { id: 'p1', singerId: 'peso', title: 'Ella Baila Sola', lyrics: 'Letra ejemplo...' },
+                { id: 'p2', singerId: 'peso', title: 'Lady Gaga', lyrics: 'Letra ejemplo...' },
+                { id: 'p3', singerId: 'peso', title: 'Por las Noches', lyrics: 'Letra ejemplo...' },
+                { id: 'p4', singerId: 'peso', title: 'PRX', lyrics: 'Letra ejemplo...' },
+                // Junior H
+                { id: 'j1', singerId: 'junior', title: 'El Azul', lyrics: 'Letra ejemplo...' },
+                { id: 'j2', singerId: 'junior', title: 'Paris', lyrics: 'Letra ejemplo...' },
+                // Gabito Ballesteros
+                { id: 'g1', singerId: 'gabito', title: 'Fina y Cara', lyrics: 'Letra ejemplo...' },
+                { id: 'g2', singerId: 'gabito', title: 'Toro Encartado', lyrics: 'Letra ejemplo...' },
+                // Barac / canciones del grupo
+                { id: 'b1', singerId: 'barac', title: 'La Cumbia de la Torre', lyrics: 'Letra ejemplo de La Torre...' },
+                { id: 'b2', singerId: 'barac', title: 'Balada en la Plaza', lyrics: 'Letra ejemplo...' }
+            ],
+            gallery: [
+                // imágenes de portada / galería inicial (incluimos las solicitadas)
+                'https://scontent.fntr5-1.fna.fbcdn.net/v/t51.75761-15/506309174_18091151278721645_1318539339158668918_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=VeBPVgd61icQ7kNvwHKp_f5&_nc_oc=Adl9ik51NC7Op0cWKnKbZvD6hyInmBwJe86YXexn9dDwkANf9ed1k4ZxNn-H4NoyYY7cKITGnsmcL--WOoQUrdq6&_nc_zt=23&_nc_ht=scontent.fntr5-1.fna&_nc_gid=sBMNyHsEeoUlE33pwBteqg&oh=00_AfdZ32RSxnAMsE507ji3U22mVBvtnouzblb7AQ5TTatb_g&oe=6905D2B4',
+                'https://scontent.fntr5-1.fna.fbcdn.net/v/t39.30808-6/494712419_1245508184243946_5845964390634384455_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=dksATyMwWHUQ7kNvwGqdM3Y&_nc_oc=AdmKH619dkmqwU4DINHq2-u1LBwPKFQAUcZ90kmp1u9Y6oWZ-ctxWQWcNfN4eCYU-fMwihYsb0D7HDz1e9GJte1I&_nc_zt=23&_nc_ht=scontent.fntr5-1.fna&_nc_gid=sJQKQ74jOzTk5ybi-UMZlw&oh=00_Aff2YRyOVmIH5b-OVpXAnm2YAbhDym9lMCWMp7Jv7yfhgw&oe=6905BCF7',
+                'https://scontent.fntr5-1.fna.fbcdn.net/v/t39.30808-6/494647078_1245309347597163_8963915443413050078_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=bMSaKGa8SiwQ7kNvwFkG9Fd&_nc_oc=AdlNSdrAXONIJLvsSFnSMPolcI0rj6iHd_w-DCoGuct7lB9UxSVSRSynLXwwh0kCGJ4sH-QULkU1F6CsnUAjjqkf&_nc_zt=23&_nc_ht=scontent.fntr5-1.fna&_nc_gid=XYPtlvvzuAIgNwY98N_-nA&oh=00_AfckRFnRelOPjXTGtl_LxOILBvnTKEJxiCE-Dl70QusplA&oe=6905AF66',
+
+            ]
+        };
+
+        // Inicializa localStorage si no existe
+        function seedData() {
+            if (!localStorage.getItem(STORAGE.SINGERS)) localStorage.setItem(STORAGE.SINGERS, JSON.stringify(INITIAL.singers));
+            if (!localStorage.getItem(STORAGE.SONGS)) localStorage.setItem(STORAGE.SONGS, JSON.stringify(INITIAL.songs));
+            if (!localStorage.getItem(STORAGE.GALLERY)) localStorage.setItem(STORAGE.GALLERY, JSON.stringify(INITIAL.gallery));
+        }
+        seedData();
+
+        // Helpers DB
+        const db = {
+            getSingers: () => JSON.parse(localStorage.getItem(STORAGE.SINGERS) || '[]'),
+            getSongs: () => JSON.parse(localStorage.getItem(STORAGE.SONGS) || '[]'),
+            getGallery: () => JSON.parse(localStorage.getItem(STORAGE.GALLERY) || '[]'),
+            saveSingers: s => localStorage.setItem(STORAGE.SINGERS, JSON.stringify(s)),
+            saveSongs: s => localStorage.setItem(STORAGE.SONGS, JSON.stringify(s)),
+            saveGallery: g => localStorage.setItem(STORAGE.GALLERY, JSON.stringify(g))
+        };
+        // Auth simple (cliente): almacena sesión en localStorage
+        function isAdminLogged() {
+            return !!localStorage.getItem(STORAGE.ADMIN_SESSION);
+        }
+        // Credenciales simples (local): usuario: admin, contraseña: torre2025
+        function tryAdminLogin(user, pass) {
+            if (user === 'admin' && pass === 'torre2025') {
+                localStorage.setItem(STORAGE.ADMIN_SESSION, JSON.stringify({ user: 'admin', at: Date.now() }));
+                return true;
+            }
+            return false;
+        }
+        function adminLogout() {
+            localStorage.removeItem(STORAGE.ADMIN_SESSION);
+            toast('Sesión cerrada');
+            // navegar/recargar la vista para mostrar el formulario de login
+            navigate();
+        }
+        // exponer por si se necesita desde el HTML/global
+        window.adminLogout = adminLogout;
+
+        // SPA navegación
+        const app = document.getElementById('app');
+        const navLinks = document.querySelectorAll('nav a');
+        function setActive(route) { navLinks.forEach(a => a.classList.toggle('active', a.dataset.route === route)); }
+        function navigate() {
+            const route = location.hash.replace('#', '') || 'home';
+            setActive(route);
+            if (route === 'home') renderHome();
+            else if (route === 'songs') renderSongs();
+            else if (route === 'quotes') renderQuotes();
+            else if (route === 'ig') renderIG();
+            else if (route === 'contact') renderContact();
+            else if (route === 'admin') renderAdmin();
+            else renderHome();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        window.addEventListener('hashchange', navigate);
+        document.addEventListener('DOMContentLoaded', () => { document.getElementById('year').textContent = new Date().getFullYear(); navigate(); });
+
+        // UI util
+        function el(tag, props = {}, inner = '') { const e = document.createElement(tag); Object.assign(e, props); if (inner) e.innerHTML = inner; return e; }
+        function toast(msg, ms = 2000) { const t = document.getElementById('toast'); t.textContent = msg; t.style.display = 'block'; setTimeout(() => t.style.display = 'none', ms); }
+
+        /* =========================
+           RENDER: HOME
+           - Portada, historia, social,  Próximos eventos
+           ========================= */
+        function renderHome() {
+            const gallery = db.getGallery();
+            app.innerHTML = '';
+            const heroCard = el('section', { className: 'hero' });
+            const inner = el('div', { className: 'hero-inner' });
+            // left: texto
+            const left = el('div', { className: 'hero-left' });
+            left.innerHTML = `<div class="intro"><h1>Los de la Torre</h1>
+        <p class="lead">Los de la Torre es una agrupación musical originaria de Monclova, Coahuila, que ha conquistado los escenarios del norte de México con su estilo único y su energía inconfundible. Bajo la dirección de Barac de la Torre, el grupo se ha consolidado como uno de los más solicitados para eventos sociales.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <a class="wa-cta" href="https://wa.me/528661311374?text=${encodeURIComponent('Hola Barac de la Torre, quiero una cotización para un evento')}" target="_blank" rel="noopener noreferrer">
+            <span class="pulse" aria-hidden="true"></span>
+            <span>Contactar a Barac de la Torre</span>
+            <span style="opacity:.55;font-size:12px;margin-left:6px">+52 866 131 1374</span>
+          </a>
+          <button class="btn ghost" id="openGalleryBtn">Ver Proximos Eventos</button>
+        </div>
+        <div class="social-row" style="margin-top:12px">
+          <a class="social-btn" href="https://www.facebook.com/losdelatorreoficial?locale=es_LA" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+          <a class="social-btn" href="https://www.instagram.com/losdelatorreoficial" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+          <a class="social-btn" href="https://wa.me/528661311374" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+      </div>`;
+            inner.appendChild(left);
+
+            // right: imagen / mini galería
+            const right = el('div', { className: 'hero-right' });
+            const rightCard = el('div', { className: 'card', style: 'width:100%;max-width:420px;text-align:center' });
+            rightCard.innerHTML = `<img src="https://scontent.fntr5-1.fna.fbcdn.net/v/t39.30808-6/475209008_1160101529451279_6757551169424132146_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=1xsFQZdbL_MQ7kNvwE8_jpu&_nc_oc=AdkiNJ75tio98SIXHlxbma92kj9oJHqs1r_zyyczPQAaVGenLweFUQTNYLX6v-_hKEtL9HOw3a6Wu1sniO7qc0bK&_nc_zt=23&_nc_ht=scontent.fntr5-1.fna&_nc_gid=1QJwB-_1eHl5hBj9WSzJEg&oh=00_AfdyO5eNfK9oFSvZGpmyITBvhbu7KJAOYuhyFEeFe-YjEg&oe=6905B14B" alt="Logo" style="border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,0.6)">`;
+            right.appendChild(rightCard);
+            inner.appendChild(right);
+            heroCard.appendChild(inner);
+            app.appendChild(heroCard);
+
+            //Próximos eventos 
+            const galSection = el('section', { style: 'margin-top:18px' });
+            const galCard = el('div', { className: 'card' });
+            galCard.innerHTML = `<h2>Próximos eventos</h2><p class="small">...</p>`;
+            const galleryGrid = el('div', { className: 'gallery' });
+            gallery.slice(0, 6).forEach(src => {
+                const img = el('img', { className: 'gimg', src, alt: 'Galería Los de la Torre' });
+                img.addEventListener('click', () => openModal(src));
+                galleryGrid.appendChild(img);
+            });
+            galCard.appendChild(galleryGrid);
+            galSection.appendChild(galCard);
+            app.appendChild(galSection);
+
+            // Historia completa
+            const hist = el('section', { className: 'card', style: 'margin-top:18px' });
+            hist.innerHTML = `<h2>Nuestra Historia</h2>
+        <p class="small">Somos Los de la Torre, una agrupación musical originaria de Monclova, Coahuila, que ha conquistado los escenarios del norte de México con un estilo único y una energía inconfundible. Desde nuestros inicios, nos hemos caracterizado por nuestra versatilidad y pasión por la música, ofreciendo un repertorio que abarca desde los éxitos más recientes hasta los clásicos que han marcado generaciones.</p>
+        <p class="small">Bajo la dirección de Barac de la Torre, nuestro fundador y líder, hemos logrado posicionarnos como una de las bandas más solicitadas para eventos sociales, bodas, fiestas y presentaciones en vivo. Nuestro compromiso con la calidad musical y el entretenimiento ha sido clave para crecer y expandirnos a otros estados de la República Mexicana.</p>
+        <p class="small">A lo largo de nuestra trayectoria, hemos tenido la oportunidad de compartir escenario con reconocidos artistas del regional mexicano y participar en importantes festivales y ferias, consolidándonos como un referente en la música en vivo</p>`;
+            app.appendChild(hist);
+
+            // abrir galería modal
+            document.getElementById('openGalleryBtn').addEventListener('click', () => openGalleryModal());
+        }
+
+        /* =========================
+           RENDER: COTIZACIONES
+           ========================= */
+        function renderQuotes() {
+            app.innerHTML = '';
+            const card = el('div', { className: 'card', style: 'text-align:center' });
+            card.innerHTML = `<h2>Cotizaciones</h2><p class="small">Contacta directamente con Barac de la Torre para solicitar presupuesto.</p>`;
+            const waLink = 'https://wa.me/528661311374?text=' + encodeURIComponent('Hola Barac de la Torre, quiero una cotización para mi evento.');
+            const waBtn = el('a', { href: waLink, target: '_blank', rel: 'noopener noreferrer', className: 'wa-cta' }, '📲 Contacto directo con Barac de la Torre');
+            waBtn.appendChild(el('div', {}, '<div style="font-size:12px;margin-left:8px;color:#012">WhatsApp: +52 866 131 1374</div>'));
+            card.appendChild(waBtn);
+            app.appendChild(card);
+        }
+
+        /* =========================
+           RENDER: BIBLIOTECA DE CANCIONES
+           - Lista textual por cantante (no reproducción)
+           ========================= */
+        let currentSingerId = null;
+        function renderSongs() {
+            app.innerHTML = '';
+            const singers = db.getSingers();
+            const songs = db.getSongs();
+            const card = el('div', { className: 'card' });
+            card.innerHTML = `<h2>Biblioteca de canciones</h2><p class="small">Navega por cantante. Haz clic en una canción para ver la letra.</p>`;
+
+            // navegación de cantantes
+            const nav = el('div', { className: 'singerNav' });
+            const allBtn = el('button', { className: 'singerBtn' + (currentSingerId === null ? ' active' : ''), onclick: () => { currentSingerId = null; renderSongs(); } }, 'Todos');
+            nav.appendChild(allBtn);
+            singers.forEach(s => {
+                const btn = el('button', { className: 'singerBtn' + (currentSingerId === s.id ? ' active' : ''), onclick: () => { currentSingerId = s.id; renderSongs(); } }, s.name);
+                nav.appendChild(btn);
+            });
+            card.appendChild(nav);
+
+            // lista de canciones en forma de lista
+            const listWrap = el('div', { className: 'songList' });
+            const filtered = songs.filter(so => currentSingerId ? so.singerId === currentSingerId : true);
+            filtered.forEach(so => {
+                const singer = singers.find(s => s.id === so.singerId) || { name: 'Desconocido' };
+                const item = el('div', { className: 'songItem', title: 'Haz clic para mostrar/ocultar letra' });
+                const left = el('div', {}, `<div class="songTitle">${escapeHtml(so.title)}</div><div class="songMeta">${escapeHtml(singer.name)}</div>`);
+                item.appendChild(left);
+                const actions = el('div', { style: 'margin-left:auto;display:flex;gap:8px;align-items:center' });
+                const lyricBtn = el('button', { className: 'btn ghost', onclick: () => toggleLyrics(so.id) }, 'Letra');
+                actions.appendChild(lyricBtn);
+                item.appendChild(actions);
+                listWrap.appendChild(item);
+
+                // letra (oculta)
+                const lyricDiv = el('div', { id: 'lyrics-' + so.id, className: 'card', style: 'display:none;margin-top:8px' }, `<pre style="white-space:pre-wrap;color:var(--muted);">${escapeHtml(so.lyrics || 'Letra no disponible')}</pre>`);
+                listWrap.appendChild(lyricDiv);
+            });
+
+            // cargar más (si hay muchas) - sencilla: botón para añadir 5 más ficticias
+            if (filtered.length === 0) listWrap.innerHTML = '<div class="small">No hay canciones. Usa el panel Admin para añadir.</div>';
+
+            card.appendChild(listWrap);
+            app.appendChild(card);
+        }
+
+        function toggleLyrics(id) {
+            const elLyrics = document.getElementById('lyrics-' + id);
+            if (!elLyrics) return;
+            elLyrics.style.display = elLyrics.style.display === 'none' ? 'block' : 'none';
+        }
+
+        /* =========================
+           RENDER: PRÓXIMOS EVENTOS (galería)
+           - Muestra todos los flyers almacenados en la galería
+           ========================= */
+        function renderIG() {
+            const gallery = db.getGallery();
+            app.innerHTML = '';
+            const card = el('div', { className: 'card' });
+            card.innerHTML = `<h2>Próximos eventos</h2><p class="small">Galería de flyers y fotos de nuestros próximos eventos. Haz clic para ampliar.</p>`;
+            const galleryGrid = el('div', { className: 'gallery' });
+            (gallery || []).forEach(src => {
+                const img = el('img', { className: 'gimg', src, alt: 'Flyer Próximos Eventos' });
+                img.addEventListener('click', () => openModal(src));
+                galleryGrid.appendChild(img);
+            });
+            if ((gallery || []).length === 0) {
+                galleryGrid.innerHTML = '<div class="small">No hay flyers. Añádelos desde el Panel Admin.</div>';
+            }
+            card.appendChild(galleryGrid);
+            app.appendChild(card);
+        }
+
+        /* =========================
+           RENDER: CONTACTO
+           ========================= */
+        function renderContact() {
+            app.innerHTML = '';
+            const card = el('div', { className: 'card' });
+            card.innerHTML = `<h2>Contacto y Redes</h2><p class="small">Sigue al grupo en sus redes oficiales o contacta para contrataciones.</p>`;
+            const socials = el('div', { style: 'display:flex;gap:8px;flex-wrap:wrap;margin-top:12px' });
+            socials.innerHTML = `<a class="social-btn" href="https://www.instagram.com/losdelatorreoficial" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                           <a class="social-btn" href="https://www.facebook.com/losdelatorreoficial?locale=es_LA" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+                           <a class="social-btn" href="mailto:contacto@losdelatorre.com" target="_blank"><i class="fas fa-envelope"></i> contacto@losdelatorre.com</a>`;
+            card.appendChild(socials);
+            app.appendChild(card);
+        }
+
+        /* =========================
+           RENDER: ADMIN
+           - Agregar cantantes, canciones y fotos (localStorage)
+           - Comentarios en cada sección
+           ========================= */
+        function renderAdmin() {
+            app.innerHTML = '';
+            // Si no hay sesión, mostrar formulario de login (controla acceso)
+            if (!isAdminLogged()) {
+                const box = el('div', { className: 'card', style: 'max-width:560px;margin:0 auto' });
+                box.innerHTML = `<h2>Ingreso Administrador</h2>
+                    <p class="small">Accede con tus credenciales para administrar la galería de Próximos eventos.</p>
+                    <label class="small" for="login_user">Usuario</label>
+                    <div class="formGroup"><input id="login_user" type="text" placeholder="Usuario" aria-label="Usuario"></div>
+                    <label class="small" for="login_pass">Contraseña</label>
+                    <div class="formGroup"><input id="login_pass" type="password" placeholder="Contraseña" aria-label="Contraseña"></div>
+                    <div style="display:flex;gap:8px;align-items:center"><button class="btn" id="loginBtn">Ingresar</button><span class="small" style="opacity:.8"></span></div>
+                    <div id="login_error" class="small" style="color:#f88;margin-top:8px;display:none"></div>`;
+                app.appendChild(box);
+                document.getElementById('loginBtn').addEventListener('click', () => {
+                    const u = document.getElementById('login_user').value.trim();
+                    const p = document.getElementById('login_pass').value;
+                    if (!u || !p) { document.getElementById('login_error').textContent = 'Usuario y contraseña requeridos'; document.getElementById('login_error').style.display = 'block'; return; }
+                    if (tryAdminLogin(u, p)) {
+                        toast('Ingreso correcto');
+                        renderAdmin();
+                    } else {
+                        document.getElementById('login_error').textContent = 'Credenciales inválidas';
+                        document.getElementById('login_error').style.display = 'block';
+                    }
+                });
+                return;
+            }
+
+            // Si está logueado, renderizar panel admin (igual que antes) y añadir sección "Agregar flyer"
+            const wrapper = el('div', { className: 'card' });
+            wrapper.innerHTML = `<h2>Panel de Administración</h2><p class="small">Agregar cantantes, canciones y fotos. Los cambios se guardan en tu navegador (localStorage).</p>
+                <div style="display:flex;justify-content:flex-end;margin-bottom:8px"><button class="btn ghost" id="logoutBtn">Cerrar sesión</button></div>`;
+            const grid = el('div', { className: 'adminGrid', style: 'margin-top:12px' });
+
+            // Form: Cantante
+            const fSinger = el('div', { className: 'card' });
+            fSinger.innerHTML = `<h3>Agregar Cantante</h3>
+        <div class="formGroup"><input id="admin_singer_name" type="text" placeholder="Nombre del cantante"></div>
+        <div class="formGroup"><input id="admin_singer_image" type="text" placeholder="URL imagen (opcional)"></div>
+        <div><button class="btn" id="addSingerBtn">Agregar cantante</button></div>`;
+            grid.appendChild(fSinger);
+
+            // Form: Canción
+            const fSong = el('div', { className: 'card' });
+            const singers = db.getSingers();
+            fSong.innerHTML = `<h3>Agregar Canción</h3>
+        <div class="formGroup"><input id="admin_song_title" type="text" placeholder="Título"></div>
+        <div class="formGroup"><select id="admin_song_singer">${singers.map(s => `<option value="${s.id}">${s.name}</option>`).join('')}</select></div>
+        <div class="formGroup"><textarea id="admin_song_lyrics" placeholder="Letra (opcional)"></textarea></div>
+        <div><button class="btn" id="addSongBtn">Agregar canción</button></div>`;
+            grid.appendChild(fSong);
+
+            // Form: Galería existente (puede usarse para otros fines)
+            const fGal = el('div', { className: 'card' });
+            fGal.innerHTML = `<h3>Agregar imagen a Galería</h3>
+        <div class="formGroup"><input id="admin_gal_url" type="text" placeholder="URL imagen"></div>
+        <div><button class="btn" id="addGalBtn">Agregar imagen</button></div>
+        <div style="margin-top:12px"><strong>Imágenes actuales:</strong><div id="admin_gal_list" style="margin-top:8px;max-height:180px;overflow:auto"></div></div>`;
+            grid.appendChild(fGal);
+
+            // Nuevo: Form para agregar flyers a "Próximos eventos" (usa la misma galería)
+            const fFlyer = el('div', { className: 'card' });
+            fFlyer.innerHTML = `<h3>Agregar Flyer a Próximos eventos</h3>
+        <div class="formGroup"><input id="admin_event_image" type="text" placeholder="URL imagen del flyer"></div>
+        <div><button class="btn" id="addEventPhotoBtn">Agregar flyer</button></div>`;
+            grid.appendChild(fFlyer);
+
+            // Listados
+            const listCard = el('div', { className: 'card', style: 'grid-column:span 2' });
+            listCard.innerHTML = `<h3>Listados</h3><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px">
+        <div><strong>Cantantes</strong><div id="admin_singer_list" style="margin-top:8px;max-height:240px;overflow:auto"></div></div>
+        <div><strong>Canciones</strong><div id="admin_song_list" style="margin-top:8px;max-height:240px;overflow:auto"></div></div>
+      </div>`;
+            grid.appendChild(listCard);
+
+            wrapper.appendChild(grid);
+            app.appendChild(wrapper);
+
+            // List render
+            renderAdminLists();
+
+            // Handlers
+            document.getElementById('addSingerBtn').addEventListener('click', addSingerAction);
+            document.getElementById('addSongBtn').addEventListener('click', addSongAction);
+            document.getElementById('addGalBtn').addEventListener('click', addGalleryAction);
+            document.getElementById('addEventPhotoBtn').addEventListener('click', addEventPhotoAction);
+            document.getElementById('logoutBtn').addEventListener('click', adminLogout);
+        }
+
+        function renderAdminLists() {
+            // actualizar selector y listados
+            const singers = db.getSingers();
+            const songs = db.getSongs();
+            // selector
+            const sel = document.getElementById('admin_song_singer');
+            if (sel) { sel.innerHTML = singers.map(s => `<option value="${s.id}">${s.name}</option>`).join(''); }
+            // cantantes lista
+            const cl = document.getElementById('admin_singer_list');
+            if (cl) {
+                cl.innerHTML = singers.map(si => `
+          <div style="display:flex;align-items:center;gap:8px;padding:6px;border-bottom:1px solid rgba(255,255,255,0.02)">
+            <div style="width:42px;height:42px;border-radius:8px;overflow:hidden">
+              <img src="${si.image || 'https://picsum.photos/seed/' + encodeURIComponent(si.name) + '/200/200'}" style="width:100%;height:100%;object-fit:cover">
+            </div>
+            <div style="flex:1"><strong>${escapeHtml(si.name)}</strong><div class="small">${si.id}</div></div>
+            <div><button class="btn ghost" onclick="deleteSinger('${si.id}')">Eliminar</button></div>
+          </div>
+        `).join('');
+            }
+            // canciones lista
+            const sl = document.getElementById('admin_song_list');
+            if (sl) {
+                sl.innerHTML = songs.map(so => `<div style="padding:6px;border-bottom:1px solid rgba(255,255,255,0.02)"><strong>${escapeHtml(so.title)}</strong><div class="small">${escapeHtml((db.getSingers().find(ss => ss.id === so.singerId) || { name: '-' }).name)}</div><div style="margin-top:6px"><button class="btn ghost" onclick="deleteSong('${so.id}')">Eliminar</button></div></div>`).join('');
+            }
+            // galería lista
+            const gl = document.getElementById('admin_gal_list');
+            if (gl) {
+                gl.innerHTML = db.getGallery().map((u, i) => `<div style="display:flex;align-items:center;gap:8px;padding:6px;border-bottom:1px solid rgba(255,255,255,0.02)"><img src="${u}" style="width:72px;height:44px;object-fit:cover;border-radius:6px"><div style="flex:1" class="small">${escapeHtml(u)}</div><div><button class="btn ghost" onclick="deleteGallery(${i})">Eliminar</button></div></div>`).join('');
+            }
+        }
+
+        // Admin actions
+        function addSingerAction() {
+            const name = document.getElementById('admin_singer_name').value.trim();
+            const img = document.getElementById('admin_singer_image').value.trim();
+            if (!name) { toast('Nombre requerido'); return; }
+            const s = db.getSingers();
+            const id = 's' + Date.now();
+            s.push({ id, name, image: img });
+            db.saveSingers(s);
+            toast('Cantante agregado');
+            document.getElementById('admin_singer_name').value = ''; document.getElementById('admin_singer_image').value = '';
+            renderAdmin(); // recargar admin para actualizar listas
+        }
+
+        function addSongAction() {
+            const title = document.getElementById('admin_song_title').value.trim();
+            const singerId = document.getElementById('admin_song_singer').value;
+            const lyrics = document.getElementById('admin_song_lyrics').value.trim();
+            if (!title || !singerId) { toast('Título y cantante son obligatorios'); return; }
+            const songs = db.getSongs();
+            const id = 'so' + Date.now();
+            songs.push({ id, singerId, title, lyrics });
+            db.saveSongs(songs);
+            toast('Canción agregada');
+            document.getElementById('admin_song_title').value = ''; document.getElementById('admin_song_lyrics').value = '';
+            renderAdmin();
+        }
+
+        function addGalleryAction() {
+            const url = document.getElementById('admin_gal_url').value.trim();
+            if (!url) { toast('URL requerida'); return; }
+            const g = db.getGallery();
+            g.unshift(url);
+            db.saveGallery(g);
+            toast('Imagen añadida a galería');
+            document.getElementById('admin_gal_url').value = '';
+            renderAdmin();
+        }
+
+        // Añadir flyer (imagen) a la galería usada por "Próximos eventos"
+        function addEventPhotoAction() {
+            const url = document.getElementById('admin_event_image').value.trim();
+            if (!url) { toast('URL del flyer requerida'); return; }
+            const g = db.getGallery();
+            g.unshift(url);
+            db.saveGallery(g);
+            toast('Flyer añadido a Próximos eventos');
+            document.getElementById('admin_event_image').value = '';
+            renderAdmin(); // refresca lista
+        }
+
+        // eliminaciones (expuestas globalmente)
+        window.deleteSinger = function (id) {
+            if (!confirm('Eliminar cantante y sus canciones?')) return;
+            const s = db.getSingers().filter(x => x.id !== id); db.saveSingers(s);
+            const so = db.getSongs().filter(x => x.singerId !== id); db.saveSongs(so);
+            toast('Cantante eliminado');
+            renderAdmin();
+        };
+        window.deleteSong = function (id) {
+            if (!confirm('Eliminar canción?')) return;
+            const so = db.getSongs().filter(x => x.id !== id); db.saveSongs(so);
+            toast('Canción eliminada'); renderAdmin();
+        };
+        window.deleteGallery = function (idx) {
+            if (!confirm('Eliminar imagen de la galería?')) return;
+            const g = db.getGallery(); g.splice(idx, 1); db.saveGallery(g);
+            toast('Imagen eliminada'); renderAdmin();
+        };
+
+        /* =========================
+           Galería modal
+           ========================= */
+        function openModal(src) {
+            const m = el('div', { className: 'modal', onclick: (e) => { if (e.target === m) m.remove(); } });
+            const img = el('img', { src });
+            m.appendChild(img);
+            document.body.appendChild(m);
+        }
+        function openGalleryModal() {
+            const g = db.getGallery();
+            const modal = el('div', { className: 'modal' });
+            const wrap = el('div', { style: 'display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;padding:20px;background:transparent' });
+            g.forEach(src => {
+                const i = el('img', { src, style: 'width:220px;height:140px;object-fit:cover;border-radius:8px;cursor:pointer' });
+                i.addEventListener('click', () => { modal.remove(); openModal(src); });
+                wrap.appendChild(i);
+            });
+            modal.appendChild(wrap);
+            modal.addEventListener('click', () => modal.remove());
+            document.body.appendChild(modal);
+        }
+
+        /* =========================
+           Helpers y utilidades
+           ========================= */
+        function escapeHtml(s) { if (!s) return ''; return s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
+        function toast(msg, ms = 2000) { const t = document.getElementById('toast'); t.textContent = msg; t.style.display = 'block'; setTimeout(() => t.style.display = 'none', ms); }
+
+        /* =========================
+           Inicialización y navegación
+           ========================= */
+        // enlazar nav global
+        document.querySelectorAll('nav a').forEach(a => {
+            a.addEventListener('click', (e) => {
+                e.preventDefault();
+                const route = a.dataset.route || 'home';
+                location.hash = route;
+            });
+        });
+
+        // Render según hash
+        navigate();
+
+        // Exponer funciones necesarias en global (para botones inline)
+        window.toggleLyrics = toggleLyrics;
+        window.openGalleryModal = openGalleryModal;
+    </script>
+</body>
+
+</html>
